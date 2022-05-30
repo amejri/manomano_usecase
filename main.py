@@ -130,6 +130,9 @@ def preprocess_data(
         test_set, params["categorical_variables_apply_get_dummies"]
     )
 
+    X_train.drop(columns=params["redundancy_columns"], inplace=True)
+    test_set.drop(columns=params["redundancy_columns"], inplace=True)
+
     return X_train, y_train, test_set
 
 
@@ -140,8 +143,8 @@ def tuning_parameters(model, X_train: pd.DataFrame, y_train: pd.Series):
     rg = GridSearchCV(
         estimator=model,
         param_grid={
-            "num_leaves": [31],
-            "max_depth": [-1, 5],
+            "num_leaves": [15, 31, 45],
+            "max_depth": [-1, 5, 10],
             "learning_rate": [0.05, 0.1],
             "n_estimators": [50, 100],
         },

@@ -21,3 +21,5 @@ numerical_variables: ["count_plaquette", "count_ampoule", "count_flacon",
 "count_capsule", "count_ml"]
 
 datetime_variables: ["marketing_declaration_date", "marketing_authorization_date"]
+
+redundancy_columns: ["label_plaquette", "is_verre"]
